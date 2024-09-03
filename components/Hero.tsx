@@ -24,6 +24,14 @@ const Hero = () => {
           handleClick={handleScroll}
         />
       </div>
+
+      <div className="hero__image-container">
+        <div className="hero__image">
+          {/* TODO: I want image to fill parent element remaining its aspect ratio */}
+
+          <div className="hero__image-overlay"></div>
+        </div>
+      </div>
     </div>
   );
 };
