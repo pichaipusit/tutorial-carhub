@@ -1,15 +1,21 @@
+"use client";
+
+import { CustomButtonProps } from "@/types";
 import React from "react";
 
-const CustomButton = () => {
+const CustomButton = ({
+  title,
+  containerStyles,
+  handleClick,
+}: CustomButtonProps) => {
   return (
     <button
       disabled={false}
       type={"button"}
-      className={`custom-btn`}
-      onClick={() => {}}
+      className={`custom-btn ${containerStyles}`}
+      onClick={handleClick}
     >
-      {/* TODO: Create a reusable btn that anyone can customize title, 
-      container and click event (don't forget it's client comp) */}
+      <span className="flex-1">{title} </span>
     </button>
   );
 };
