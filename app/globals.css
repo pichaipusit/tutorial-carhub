@@ -169,12 +169,18 @@
   @apply flex flex-col justify-start items-start gap-6;
 }
 
+/* TODO:  
+Fix 2 classes so that 
+1. Socials link group go down below others when on mobile view
+2. on md screen, link groups should be on the right next to logo
+3. link groups leave more space from logo on wider screen
+*/
 .footer__links {
-  @apply flex-1 w-full flex md:justify-end flex-wrap max-md:mt-10 gap-20;
+  @apply w-full flex max-md:mt-10 gap-20;
 }
 
 .footer__link {
-  @apply flex flex-col gap-6 text-base min-w-[170px];
+  @apply flex flex-col gap-6 text-base;
 }
 
 .footer__copyrights {
