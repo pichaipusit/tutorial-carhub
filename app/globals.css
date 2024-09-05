@@ -170,7 +170,7 @@
 }
 
 .footer__links {
-  @apply flex-1 w-full flex md:justify-end flex-wrap max-md:mt-10 gap-20;
+  @apply flex-1 flex-wrap w-full md:justify-end flex max-md:mt-10 gap-20;
 }
 
 .footer__link {
