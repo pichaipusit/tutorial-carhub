@@ -20,13 +20,19 @@ const SearchManufacturer = ({
 }: SearchManuFacturerProps) => {
   const [query, setQuery] = useState("");
 
-  // TODO: How can u filter list from query?
+  const filteredManufacturers =
+    query === ""
+      ? manufacturers
+      : manufacturers.filter((item) =>
+          item
+            .toLowerCase()
+            .replace(/\s+/g, "")
+            .includes(query.toLowerCase().replace(/\s+/g, ""))
+        );
 
   return (
     <div className="search-manufacturer">
-      <Combobox
-      // TODO: Set value and send back to parent comp.
-      >
+      <Combobox value={manufacturer} onChange={setManuFacturer}>
         <div className="relative w-full">
           {/* Button for the combobox. Click on the icon to see the complete dropdown */}
           <ComboboxButton className="absolute top-[14px]">
@@ -43,17 +49,17 @@ const SearchManufacturer = ({
           <ComboboxInput
             className="search-manufacturer__input"
             displayValue={(item: string) => item}
-            // TODO: Update the search query when the input changes
+            onChange={(e) => setQuery(e.target.value)}
             placeholder="Volkswagen..."
           />
 
           {/* Transition for displaying the options */}
           <Transition
-            // TODO: group multiple elements without introducing an additional DOM node i.e., <></>
+            as={Fragment}
             leave="transition ease-in duration-100"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
-            //TODO: Reset the search query after the transition completes
+            afterLeave={() => setQuery("")}
           >
             <ComboboxOptions
               className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
