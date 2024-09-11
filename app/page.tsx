@@ -6,7 +6,7 @@ export default async function Home() {
   const allCars = await fetchCars();
   console.log("🤣", allCars);
 
-  // TODO: How u know if fetchCars is working?
+  const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1;
 
   return (
     <main className="overflow-hidden-">
@@ -37,7 +37,7 @@ export default async function Home() {
         ) : (
           <div className="home__error-container">
             <h2 className="text-black text-xl font-bold">Oops, no results</h2>
-            {/* TODO: Show more of something useful from the API */}
+            <p>{allCars?.message} </p>
           </div>
         )}
       </div>

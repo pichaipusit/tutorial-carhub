@@ -26,15 +26,17 @@ const CarCard = ({ car }: CarCardProps) => {
         </h2>
       </div>
 
-      {/* TODO: Align '$' on start and '/day' on bottom*/}
       <p className="flex mt-6 text-[32px] leading-[38px] font-extrabold ">
-        <span className=" text-[14px] leading-[17px] font-semibold">$</span>
+        <span className="self-start text-[14px] leading-[17px] font-semibold">
+          $
+        </span>
         {carRent}
-        <span className=" text-[14px] leading-[17px] font-medium">/day</span>
+        <span className="self-end text-[14px] leading-[17px] font-medium">
+          /day
+        </span>
       </p>
 
-      {/* TODO: Make it know the boundaries of the parent with enough space to show img*/}
-      <div className=" my-3 object-contain ">
+      <div className="relative w-full h-40 my-3 object-contain ">
         <Image
           src="/hero.png"
           alt="car model"
@@ -44,9 +46,8 @@ const CarCard = ({ car }: CarCardProps) => {
         />
       </div>
 
-      {/* TODO: Show only view more btn when hover*/}
       <div className="relative flex w-full mt-2">
-        <div className="flex w-full justify-between text-grey">
+        <div className="flex group-hover:invisible w-full justify-between text-grey">
           <div className="flex flex-col justify-center items-center gap-2">
             <Image
               src="/steering-wheel.svg"

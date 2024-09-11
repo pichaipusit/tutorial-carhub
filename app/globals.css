@@ -127,9 +127,8 @@
   @apply text-[14px] leading-[17px];
 }
 
-/* TODO: Only show on the bottom when hover */
 .car-card__btn-container {
-  @apply w-full z-10;
+  @apply hidden group-hover:flex absolute w-full z-10;
 }
 /* END: Car Card styles */
 
