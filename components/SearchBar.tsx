@@ -22,14 +22,34 @@ const SearchBar = () => {
   const [manufacturer, setManuFacturer] = useState("");
   const [model, setModel] = useState("");
 
-  // TODO: How can u update url when users press the search btn?
-  const handleSearch = () => {};
+  const router = useRouter();
 
-  const updateSearchParams = () => {
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (manufacturer.trim() === "" && model.trim() === "") {
+      alert("Please provide some input");
+    }
+
+    updateSearchParams(manufacturer.toLowerCase(), model.toLowerCase());
+  };
+
+  const updateSearchParams = (manufacturer: string, model: string) => {
     // Create a new URLSearchParams object using the current URL search parameters
+    const searchParams = new URLSearchParams(window.location.search);
+
     // Update or delete the 'model' search parameter based on the 'model' value
+    model ? searchParams.set("model", model) : searchParams.delete("model");
     // Update or delete the 'manufacturer' search parameter based on the 'manufacturer' value
+    manufacturer
+      ? searchParams.set("manufacturer", manufacturer)
+      : searchParams.delete("manufacturer");
+
     // Generate the new pathname with the updated search parameters
+    const newPathName = `${
+      window.location.pathname
+    }?${searchParams.toString()}`;
+    router.push(newPathName);
   };
 
   return (
@@ -57,8 +77,10 @@ const SearchBar = () => {
           placeholder="Tiguan..."
           className="searchbar__input"
         />
-        {/* TODO: Code below so that There're 2 search btns on mobile view, but 1 on desktop view  */}
+        <SearchButton otherClasses="sm:hidden" />
       </div>
+
+      <SearchButton otherClasses="max-sm:hidden" />
     </form>
   );
 };
