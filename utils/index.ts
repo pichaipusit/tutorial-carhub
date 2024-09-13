@@ -1,3 +1,5 @@
+import { CarProps } from "@/types";
+
 export async function fetchCars() {
   // Set the required headers for the API request
   const headers = {
@@ -32,4 +34,24 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
   const rentalRatePerDay = basePricePerDay + mileageRate + ageRate;
 
   return rentalRatePerDay.toFixed(0);
+};
+
+export const generateCarImageUrl = (car: CarProps, angle?: string) => {
+  //TODO: We don't want to manually add ?, =, & on url. How can we do that?
+  // "https://cdn.imagin.studio/getimage"
+  const { make, model, year } = car;
+
+  url.searchParams.append(
+    "customer",
+    process.env.NEXT_PUBLIC_IMAGIN_API_KEY || ""
+  );
+  url.searchParams.append("make", make);
+  //TODO: Add correct model value to this below
+  url.searchParams.append("modelFamily");
+  url.searchParams.append("zoomType", "fullscreen");
+  url.searchParams.append("modelYear", `${year}`);
+  // url.searchParams.append("zoomLevel", zoomLevel);
+  url.searchParams.append("angle", `${angle}`);
+
+  return `${url}`;
 };

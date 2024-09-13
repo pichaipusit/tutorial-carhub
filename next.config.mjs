@@ -1,4 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  // TODO:
+  images: {
+    domains: ["cdn.imagin.studio"],
+  },
+};
 
 export default nextConfig;
