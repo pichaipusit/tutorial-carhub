@@ -37,8 +37,7 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
 };
 
 export const generateCarImageUrl = (car: CarProps, angle?: string) => {
-  //TODO: We don't want to manually add ?, =, & on url. How can we do that?
-  // "https://cdn.imagin.studio/getimage"
+  const url = new URL("https://cdn.imagin.studio/getimage");
   const { make, model, year } = car;
 
   url.searchParams.append(
@@ -46,8 +45,7 @@ export const generateCarImageUrl = (car: CarProps, angle?: string) => {
     process.env.NEXT_PUBLIC_IMAGIN_API_KEY || ""
   );
   url.searchParams.append("make", make);
-  //TODO: Add correct model value to this below
-  url.searchParams.append("modelFamily");
+  url.searchParams.append("modelFamily", model.split(" ")[0]);
   url.searchParams.append("zoomType", "fullscreen");
   url.searchParams.append("modelYear", `${year}`);
   // url.searchParams.append("zoomLevel", zoomLevel);

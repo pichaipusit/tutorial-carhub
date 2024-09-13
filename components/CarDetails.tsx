@@ -10,13 +10,16 @@ import {
 import { CarProps } from "@/types";
 import { generateCarImageUrl } from "@/utils";
 
-// TODO: What props this comp. should have?
+interface CarDetailProps {
+  isOpen: boolean;
+  closeModal: () => void;
+  car: CarProps;
+}
 
-const CarDetails = () => (
+const CarDetails = ({ isOpen, closeModal, car }: CarDetailProps) => (
   <>
-    {/* TODO: Fix this after u add props */}
-    <Transition appear show= as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={}>
+    <Transition appear show={isOpen} as={Fragment}>
+      <Dialog as="div" className="relative z-10" onClose={closeModal}>
         <TransitionChild
           as={Fragment}
           enter="ease-out duration-300"
@@ -40,12 +43,10 @@ const CarDetails = () => (
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              {/* TODO: Make scrollable after 90vh */}
-              <DialogPanel className="relative w-full max-w-lg max-h-[90vh] transform rounded-2xl bg-white p-6 text-left shadow-xl transition-all flex flex-col gap-5">
+              <DialogPanel className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl bg-white p-6 text-left shadow-xl transition-all flex flex-col gap-5">
                 <button
                   type="button"
-                  // TODO: Make X btn stay on top right
-                  className=" z-10 w-fit p-2 bg-primary-blue-100 rounded-full"
+                  className="absolute top-2 right-2 z-10 w-fit p-2 bg-primary-blue-100 rounded-full"
                   onClick={closeModal}
                 >
                   <Image
@@ -105,11 +106,10 @@ const CarDetails = () => (
                   </h2>
 
                   <div className="mt-3 flex flex-wrap gap-4">
-
-                  {/* TODO: Fix this so that it look like this https://youtu.be/pUNSHPyVryU?list=PL6QREj8te1P7gixBDSU8JLvQndTEEX3c3&t=7891 */}
-                    {(() => (
+                    {Object.entries(car).map(([key, value]) => (
                       <div
-                    
+                        className="flex justify-between gap-5 w-full text-right"
+                        key={key}
                       >
                         <h4 className="text-grey capitalize">
                           {key.split("_").join(" ")}

@@ -81,8 +81,11 @@ const CarCard = ({ car }: CarCardProps) => {
         </div>
       </div>
 
-      {/* TODO: What props this comp. should have? */}
-      <CarDetails />
+      <CarDetails
+        isOpen={isOpen}
+        closeModal={() => setIsOpen(false)}
+        car={car}
+      />
     </div>
   );
 };
