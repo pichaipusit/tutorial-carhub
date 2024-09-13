@@ -3,9 +3,10 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import { calculateCarRent } from "@/utils";
-import CustomButton from "./CustomButton";
+import { calculateCarRent, generateCarImageUrl } from "@/utils";
 import { CarProps } from "@/types";
+import CustomButton from "./CustomButton";
+import CarDetails from "./CarDetails";
 
 interface CarCardProps {
   car: CarProps;
@@ -26,7 +27,7 @@ const CarCard = ({ car }: CarCardProps) => {
         </h2>
       </div>
 
-      <p className="flex mt-6 text-[32px] leading-[38px] font-extrabold ">
+      <p className="flex mt-6 text-[32px] leading-[38px] font-extrabold">
         <span className="self-start text-[14px] leading-[17px] font-semibold">
           $
         </span>
@@ -36,9 +37,9 @@ const CarCard = ({ car }: CarCardProps) => {
         </span>
       </p>
 
-      <div className="relative w-full h-40 my-3 object-contain ">
+      <div className="relative w-full h-40 my-3 object-contain">
         <Image
-          src="/hero.png"
+          src={generateCarImageUrl(car)}
           alt="car model"
           fill
           priority
@@ -79,6 +80,12 @@ const CarCard = ({ car }: CarCardProps) => {
           />
         </div>
       </div>
+
+      <CarDetails
+        isOpen={isOpen}
+        closeModal={() => setIsOpen(false)}
+        car={car}
+      />
     </div>
   );
 };
