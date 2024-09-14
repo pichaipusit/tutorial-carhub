@@ -12,6 +12,7 @@ interface CarCardProps {
   car: CarProps;
 }
 
+// TODO: How to automatically refresh the data
 const CarCard = ({ car }: CarCardProps) => {
   const { city_mpg, year, make, model, transmission, drive } = car;
 

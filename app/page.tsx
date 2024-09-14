@@ -3,6 +3,13 @@ import { fetchCars } from "@/utils";
 import Image from "next/image";
 
 export default async function Home() {
+  // {
+  //   manufacturer: searchParams.manufacturer || "",
+  //   year: searchParams.year || 2022,
+  //   fuel: searchParams.fuel || "",
+  //   limit: searchParams.limit || 10,
+  //   model: searchParams.model || "",
+  // }
   const allCars = await fetchCars();
   console.log("🤣", allCars);
 
