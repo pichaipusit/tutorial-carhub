@@ -1,4 +1,4 @@
-These exercises are derived from the Car Showcase Tutorial. They are designed to help you practice and apply the concepts learned throughout the tutorial.
+These exercises are derived from [the Car Showcase Tutorial](https://www.youtube.com/watch?v=pUNSHPyVryU&t=2851s). They are designed to help you practice and apply the concepts learned throughout the tutorial.
 
 ## Getting Started
 
